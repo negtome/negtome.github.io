@@ -153,7 +153,7 @@
               </span> -->
               <!-- Arxiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2312.05039"
+                <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -344,11 +344,14 @@
         <div class="content has-text-justified">
           <p>
             Text-based adversarial guidance using a negative prompt has emerged as a widely adopted approach to push the output features away from undesired concepts. 
-            While useful, performing adversarial guidance using text alone can be insufficient to capture complex visual concepts and avoid undesired visual elements like copyrighted characters. 
+            <strong>While useful, performing adversarial guidance using text alone can be insufficient to capture complex visual concepts and avoid undesired visual elements like copyrighted characters. </strong>
             In this paper, for the first time we explore an alternate modality in this direction by performing adversarial guidance directly using visual features from a reference image or other images in a batch. 
             In particular, we introduce negative token merging (NegToMe), a simple but effective training-free approach which performs adversarial guidance by selectively pushing apart matching semantic features (between reference and output generation) during the reverse diffusion process. 
             When used w.r.t. other images in the same batch, we observe that NegToMe significantly increases output diversity (racial, gender, visual) without sacrificing output image quality. Similarly, when used w.r.t. a reference copyrighted asset, NegToMe helps reduce visual similarity with copyrighted content by 34.57%. 
             NegToMe is simple to implement using just few-lines of code, uses only marginally higher (<4%) inference times and generalizes to different diffusion architectures like Flux, which do not natively support the use of a separate negative prompt.
+          </p>
+          <p>
+            <strong>TLDR;</strong> We propose an alternate modality to traditional text (negative-prompt) based adversarial guidance, by <strong>directly using visual features from a reference image</strong> to guide the generation process. 
           </p>
         </div>
       </div>
@@ -402,22 +405,6 @@
   <div class="container">
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Improving Output Diversity (SDXL)</h2>
-          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
-              <br><br> </p> -->
-          <figure>
-            <img src="./docs/diversity-sdxl-v1.jpg" width=100%/>
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-          </figure>
-        </div>
-    </div>
-  </div>
-</div>
-
-<div class="hero-body is-small">
-  <div class="container alternate-section">
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
           <h2 class="title is-3">Improving Output Diversity (Flux)</h2>
           <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
               <br><br> </p> -->
@@ -430,6 +417,24 @@
   </div>
 </div>
 
+<div class="hero-body is-small ">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Improving Output Diversity (SDXL)</h2>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
+          <figure>
+            <img src="./docs/diversity-sdxl-v1.jpg" width=100%/>
+            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          </figure>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="hero-body is-small">
   <div class="container alternate-section">
     <div class="columns is-centered has-text-centered">
@@ -440,6 +445,10 @@
           <figure>
             <img src="./docs/copyright-v1.jpg" width=100%/>
             <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+            <figcaption style="text-align:justify;">
+              <strong>Copyright Mitigation.</strong> state-of-the-art diffusion models (SDXL, Flux) can generate copyrighted characters even if the input-prompt does not explicitly mention the character name. Furthermore, performing copyright mitigation using negative prompt (i.e., adding character name to negative prompt) is often
+              insufficient. NegToMe helps better reduce similarity with copyrighted characters by directly using visual features from a copyrighted retrieval database for adversarial guidance.
+            </figcaption>
           </figure>
         </div>
     </div>
