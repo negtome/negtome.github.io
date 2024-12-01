@@ -213,17 +213,19 @@
 
 
 <section class="hero teaser">
-  <div class="container is-max-desktop alternate-section">
+  <div class="container is-max-desktop">
     <div class="hero-body" text-align: center>
-      <!-- <img src="./docs/smartmask/multi-obj-insertion-p2-v2.png" width=100%/>   -->
-      <video id="teaser" autoplay muted loop playsinline height="100%">
+      <img src="./docs/overview-v1.jpg" width=100%/>  
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/teaser.mp4"
                 type="video/mp4">
-      </video>
-      <h2 class=" has-text-justified">
-        <br> 
-              NegToMe is a simple but effective training-free approach which performs adversarial guidance by selectively pushing apart matching semantic features (between reference and output generation) during the reverse diffusion process. 
-              When used w.r.t. other images in the same batch, we observe that NegToMe significantly increases output diversity (racial
+      </video> -->
+      <h2 class="has-text-justified">
+        <!-- <br> -->
+        <strong>Overview</strong>. We introduce <span style="font-style: italic;">negtome</span>, a 
+        training-free approach for performing image-based adversarial feature guidance. 
+        Above, we show its applications for: 1) Improving output diversity (e.g., visual, gender, racial) when performed across the same batch.
+        and, 2) Reducing visual similarity with copyrighted characters when used with respect to a copyright database (bottom).
       </h2>
     </div>
   </div>
@@ -292,29 +294,41 @@
   <div class="hero-body">
     <div class="container is-max-desktop">
       <h3 class="subtitle has-text-centered">
-        <b>Improving Output Diversity (Flux)</b>
+        <b>Interactive Gallery (Output Diversity)</b>
       </h3>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p5.png">
+          <img src="./docs/examples-6.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p4.png">
+          <img src="./docs/examples-8.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p6.png">
+          <img src="./docs/examples-5.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p7.png">
+          <img src="./docs/examples-11.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p1.png">
+          <img src="./docs/examples-9.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p2.png">
+          <img src="./docs/examples-10.jpg">
         </div>
         <div class="item-simple item-steve">
-          <img src="./docs/gradop/sample-results-sdedit-p3.png">
+          <img src="./docs/examples-1.jpg">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/examples-2.jpg">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/examples-7.jpg">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/examples-3.jpg">
+        </div>
+        <div class="item-simple item-steve">
+          <img src="./docs/examples-4.jpg">
         </div>
       </div>
     </div>
@@ -322,7 +336,7 @@
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop alternate-section">
+  <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -364,37 +378,40 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">How does NegToMe work?</h2>
         <figure>
-          <img src="./docs/smartmask/method-overview-combined-v2.png" width=100%/>
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          <img src="./docs/method-overview-v1.jpg" width="100%" alt="Method Overview of NegToMe"/>
+          <!-- <figcaption style="text-align:justify;">
+            <strong>Method Overview.</strong> The core idea of NegToMe is to perform adversarial guidance directly using visual features from a reference image (or other images in the same batch). NegToMe is simple and can be applied in any transformer block. A simple three-step process is used for performing adversarial guidance using NegToMe.
+          </figcaption> -->
         </figure>
-        <p style="text-align:justify"> 
-          <br>
-          <!-- (a) Given a reference painting <emph>y</emph> and text prompt <emph>\tau_{text}</emph>, we first formulate the guided synthesis problem as the solution $x^\star$ of a constrained optimization problem with 2 properties: 1) $x^\star$ lies in the subspace $\mathcal{S}_{\tau_{text}}$ of outputs conditioned only on the text, and, 2) upon painting $x$ we should recover reference painting $y$. While computing an exact solution of this optimization is infeasible, we show that an approximation can be obtained by solving the unconstrained optimization in (b). Here we first use gradient descent to compute a point $x^\star$ close to a random sample $x_{\tau_{text}} \in \mathcal{S}_{\tau_{text}}$, while still minimizing the painting loss $\mathcal{L}(f(x),y)$. This $x^\star$ is usually non-photorealistic due to gradient descent. We therefore use the diffusion based inversion from \cite{song2020denoising} to map it back to target domain $\mathcal{S}_{\tau_{text}}$.  -->
-          <!-- <figcaption> -->
-          <!-- </figcaption> -->
-          <br><br>
-        </p>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <figure style="margin: 0; flex: 1;">
+            <img src="./docs/alg-v1.jpg" width="60%" alt="Method Overview of NegToMe" style="display: block; margin: auto;" />
+          </figure>
+          <figcaption style="text-align:justify; margin-left: 20px; flex: 1;">
+            <strong>Method Overview (up).</strong> (a) The core idea of NegToMe is to perform adversarial guidance directly using visual features from a reference image (or other images in the same batch). (b) NegToMe is simple and can be applied in any transformer block. (c) A simple three-step process is used for performing adversarial guidance using NegToMe.
+            <br><br>
+            <strong>Implementation (left).</strong> NegToMe can be incorporated in most diffusion models using just a few lines of code.
+          </figcaption>
+        </div>
       </div>
   </div>
 </div>
 </div>
 
 <div class="hero-body is-small">
-<div class="container alternate-section">
-  <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Improving Output Diversity (SDXL)</h2>
-        <p style="text-align:justify"><b>Comparison with prior works.</b> We observe that as compared to with state-of-the-art image inpainting methods, SmartMask allows the user to perform object insertion while better preserving the background around the inserted object
-            <br><br> </p>
-        <figure>
-          <!-- <img src="./docs/gradop/test.png" width=100%/> -->
-          <img src="./docs/smartmask/method-overview-combined-v2.png" width=100%/>
-          <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-          <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
-        </figure>
-      </div>
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Improving Output Diversity (SDXL)</h2>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
+          <figure>
+            <img src="./docs/diversity-sdxl-v1.jpg" width=100%/>
+            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          </figure>
+        </div>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="hero-body is-small">
@@ -402,55 +419,93 @@
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Improving Output Diversity (Flux)</h2>
-          <p style="text-align:justify"><b>Comparison with prior works.</b> We observe that as compared to with state-of-the-art image inpainting methods, SmartMask allows the user to perform object insertion while better preserving the background around the inserted object
-              <br><br> </p>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
           <figure>
-            <!-- <img src="./docs/gradop/test.png" width=100%/> -->
-            <img src="./docs/smartmask/method-overview-combined-v2.png" width=100%/>
-            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
+            <img src="./docs/flux-v2.jpg" width=100%/>
             <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
           </figure>
         </div>
     </div>
   </div>
+</div>
+
+<div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Copyright Mitigation</h2>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
+          <figure>
+            <img src="./docs/copyright-v1.jpg" width=100%/>
+            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+          </figure>
+        </div>
+    </div>
   </div>
+</div>
+
 
 <div class="hero-body is-small">
   <div class="container alternate-section">
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Improving Output Aesthetics and Details</h2>
-          <p style="text-align:justify"><b>Comparison with prior works.</b> We observe that as compared to with state-of-the-art image inpainting methods, SmartMask allows the user to perform object insertion while better preserving the background around the inserted object
-              <br><br> </p>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
           <figure>
-            <!-- <img src="./docs/gradop/test.png" width=100%/> -->
-            <img src="./docs/smartmask/method-overview-combined-v2.png" width=100%/>
-            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+            <img src="./docs/output-quality-v2.jpg" width=100%/>
+            <figcaption style="text-align:justify;">
+              <strong>Output Aesthetics.</strong> Simply using a blurry reference with NegToMe improves output aesthetics / details without any finetuning.
+            </figcaption>
           </figure>
         </div>
     </div>
   </div>
-  </div>
+</div>
 
 
 <div class="hero-body is-small">
   <div class="container alternate-section">
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Improving Output Aesthetics and Details</h2>
-          <p style="text-align:justify"><b>Comparison with prior works.</b> We observe that as compared to with state-of-the-art image inpainting methods, SmartMask allows the user to perform object insertion while better preserving the background around the inserted object
-              <br><br> </p>
+          <h2 class="title is-3">Cross-Domain Adversarial Guidance</h2>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
           <figure>
-            <!-- <img src="./docs/gradop/test.png" width=100%/> -->
-            <img src="./docs/smartmask/method-overview-combined-v2.png" width=100%/>
-            <!-- <img src="./docs/gradop/sdedit-var-p7.png" width=100%/> -->
-            <!-- <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption> -->
+            <img src="./docs/cross-domain-v2.jpg" width=100%/>
+            <figcaption style="text-align:justify;">
+              <!-- <strong>Cross-domain guidance.</strong>  -->
+              NegToMe can also be used for adversarial guidance using cross-domain reference images (eg, sketch-to-photo in above).
+            </figcaption>
           </figure>
         </div>
     </div>
   </div>
+</div>
+
+
+<div class="hero-body is-small">
+  <div class="container alternate-section">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Adversarial Guidance for Style</h2>
+          <!-- <p style="text-align:justify"><b>Comparison with only negative prompt based mitigation</b> 
+              <br><br> </p> -->
+          <figure>
+            <img src="./docs/style-guidance-v1.jpg" width=100%/>
+            <figcaption style="text-align:justify;">
+              <!-- <strong>Cross-domain guidance.</strong>  -->
+              NegToMe can also be used for style guidance: excluding specific artistic elements while still mainting desired image content. For instance, in above example the user wants <strong>a painting of a starry night</strong> without artistic elements from van-gogh style. 
+            </figcaption>
+          </figure>
+        </div>
+    </div>
   </div>
+</div>
+
+
 
 <!--/ Paper video. -->
 <!-- </div> -->
