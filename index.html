@@ -39,6 +39,9 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script
+	type="module"
+	src="https://gradio.s3-us-west-2.amazonaws.com/4.37.2/gradio.js"></script>
   <!-- <script src="./static/js/target.js"></script> -->
   <base target="_blank">
 </head>
@@ -333,6 +336,19 @@
     </div>
   </div>
 </section>
+
+<section class="hero">
+  <!-- Paper video. -->
+  <div class="hero-body is-small">
+  <!-- <div class="container alternate-section"> -->
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <iframe src="https://1d48b3d5b4e11cd57e.gradio.live/" width="100%", height="700px"></iframe> -->
+          <gradio-app src="https://1d48b3d5b4e11cd57e.gradio.live/"></gradio-app>
+        </div>
+    </div>
+  </div>
+  </div>
 
 <section class="section">
   <div class="container is-max-desktop">
